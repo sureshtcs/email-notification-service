@@ -1,16 +1,9 @@
 server:
   port: 8280
-  error:
-    whitelabel:
-      enabled: false
 
 spring:
   application:
     name: DEPARTMENT-SERVICE
-    cloud:
-      config:
-        enabled: true
-        uri: http://localhost:8580
 #  zipkin:
 #    base-url: http://127.0.0.1:9411/
 
@@ -27,4 +20,4 @@ management:
   endpoints:
     web:
       exposure:
-        include:"*":
+        include: "*"
