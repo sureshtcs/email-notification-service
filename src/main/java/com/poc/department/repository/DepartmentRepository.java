@@ -1,10 +1,10 @@
-package com.agnasarp.department.repository;
+package com.poc.department.repository;
 
-import com.agnasarp.department.entity.Department;
+import com.poc.department.model.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
-    Department getDepartmentByDepartmentId(Long departmentId);
+    Department getDepartmentById(Long id);
 }

@@ -1,11 +1,14 @@
-package com.agnasarp.department.service;
+package com.poc.department.service;
 
-import com.agnasarp.department.entity.Department;
-import com.agnasarp.department.repository.DepartmentRepository;
+import com.poc.department.model.Department;
+import com.poc.department.repository.DepartmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DepartmentService {
@@ -19,8 +22,11 @@ public class DepartmentService {
         return departmentRepository.save(department);
     }
 
-    public Department getDepartmentById(Long departmentId) {
+    public Department getDepartmentById(Long id) {
         log.info("Inside getDepartmentById method of DepartmentService");
-        return departmentRepository.getDepartmentByDepartmentId(departmentId);
+        return departmentRepository.getDepartmentById(id);
+    }
+    public List getAllDepartments() {
+        return new ArrayList(departmentRepository.findAll());
     }
 }

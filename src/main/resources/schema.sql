@@ -1,0 +1,7 @@
+CREATE TABLE department
+(
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    department_code INTEGER,
+    name VARCHAR(255) DEFAULT NULL,
+    address VARCHAR(255) DEFAULT NULL
+);

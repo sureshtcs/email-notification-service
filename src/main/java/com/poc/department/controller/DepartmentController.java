@@ -1,11 +1,13 @@
-package com.agnasarp.department.controller;
+package com.poc.department.controller;
 
-import com.agnasarp.department.entity.Department;
-import com.agnasarp.department.service.DepartmentService;
+import com.poc.department.model.Department;
+import com.poc.department.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/departments")
@@ -21,8 +23,14 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Department getDepartmentById(@PathVariable("id") Long departmentId) {
+    public Department getDepartmentById(@PathVariable("id") Long id) {
         log.info("Inside getDepartmentById method of DepartmentController");
-        return departmentService.getDepartmentById(departmentId);
+        return departmentService.getDepartmentById(id);
+    }
+
+    @GetMapping("/")
+    public List getAllDepartments() {
+        log.info("Inside getDepartmentById method of DepartmentController");
+        return departmentService.getAllDepartments();
     }
 }
