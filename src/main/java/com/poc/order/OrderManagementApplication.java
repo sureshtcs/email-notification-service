@@ -1,12 +1,12 @@
-package com.poc.department;
+package com.poc.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DepartmentManagementApplication {
+public class OrderManagementApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DepartmentManagementApplication.class, args);
+        SpringApplication.run(OrderManagementApplication.class, args);
     }
 
 }
