@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.poc.order</groupId>
-    <artifactId>order-management</artifactId>
+    <artifactId>email-notification-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>order-management</name>
+    <name>email-notification-service</name>
     <description>Order management</description>
     <properties>
         <java.version>1.8</java.version>
@@ -85,7 +85,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>order-management</finalName>
+        <finalName>email-notification-service</finalName>
     </build>
 
 </project>

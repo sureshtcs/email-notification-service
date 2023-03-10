@@ -1,4 +1,4 @@
 FROM openjdk:8
-ADD target/order-management.jar order-management.jar
+ADD target/email-notification-service.jar email-notification-service.jar
 EXPOSE 8091
-ENTRYPOINT ["java","-jar","order-management.jar"]
+ENTRYPOINT ["java","-jar","email-notification-service.jar"]
