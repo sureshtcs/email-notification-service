@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-notification-service
+  labels:
+    app: 
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: email-notification-service
+      labels:
+        app: email-notification-service
+    spec:
+      containers:
+        - name: email-notification-service
+          image: suresh55/order-management
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8091
+  selector:
+    matchLabels:
+      app: email-notification-service
