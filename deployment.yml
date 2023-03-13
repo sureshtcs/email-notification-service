@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: email-notification-service
+  name: notify-service
 spec:
   selector:
     matchLabels:
-      app: email-notification-service
+      app: notify-service
   replicas: 2
   template:
     metadata:
       labels:
-        app: email-notification-service
+        app: notify-service
     spec:
       containers:
-        - name: email-notification-service
-          image: iad.ocir.io/cesdev/email-notification-service/order-management
+        - name: notify-service
+          image: iad.ocir.io/cesdev/notify-service/order-management
           imagePullPolicy: Always
           ports:
-            - name: email-notification-service
+            - name: notify-service
               containerPort: 8095
               protocol: TCP
       imagePullSecrets:
@@ -26,9 +26,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: email-notification-service-lb
+  name: notify-service-lb
   labels:
-    app: email-notification-service
+    app: notify-service
   annotations:
     service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
     service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
@@ -38,4 +38,4 @@ spec:
   ports:
     - port: 8095
   selector:
-    app: email-notification-service
+    app: notify-service
