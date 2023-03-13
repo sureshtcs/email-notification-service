@@ -5,6 +5,7 @@ import com.poc.order.service.EmailNotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +19,13 @@ public class EmailNotificationController {
     private EmailNotificationService emailNotificationService;
 
     @PostMapping("/")
-    public NotificationRequest submitEmailNotification(@RequestBody NotificationRequest notificationRequest) {
+    public ResponseEntity<String> submitEmailNotification(@RequestBody NotificationRequest notificationRequest) {
         log.info("Inside submitEmailNotification method of EmailNotificationController");
         return emailNotificationService.submitEmailNotification(notificationRequest);
     }
 
     @GetMapping("/")
-    public List getAllNotification() {
+    public List<NotificationRequest> getAllNotification() {
         log.info("Inside getAllNotification method of EmailNotificationController");
         return emailNotificationService.getAllNotification();
     }
