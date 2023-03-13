@@ -2,22 +2,40 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: email-notification-service
-  labels:
-    app: 
 spec:
+  selector:
+    matchLabels:
+      app: email-notification-service
   replicas: 2
   template:
     metadata:
-      name: email-notification-service
       labels:
         app: email-notification-service
     spec:
       containers:
         - name: email-notification-service
-          image: suresh55/order-management
-          imagePullPolicy: IfNotPresent
+          image: iad.ocir.io/cesdev/email-notification-service/order-management
+          imagePullPolicy: Always
           ports:
-            - containerPort: 8091
+            - name: email-notification-service
+              containerPort: 8095
+              protocol: TCP
+      imagePullSecrets:
+        - name: ocirsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: email-notification-service-lb
+  labels:
+    app: email-notification-service
+  annotations:
+    service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8095
   selector:
-    matchLabels:
-      app: email-notification-service
+    app: email-notification-service
