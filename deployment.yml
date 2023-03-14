@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: notify-service
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: notify-service
-              containerPort: 8085
+              containerPort: 8080
               protocol: TCP
       imagePullSecrets:
         - name: ocirsecret
@@ -36,6 +36,6 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8085
+    - port: 8080
   selector:
     app: notify-service
