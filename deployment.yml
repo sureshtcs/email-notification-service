@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: notify-service
-              containerPort: 8080
+              containerPort: 8090
               protocol: TCP
       imagePullSecrets:
         - name: ocirsecret
@@ -36,6 +36,6 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8080
+    - port: 8090
   selector:
     app: notify-service
